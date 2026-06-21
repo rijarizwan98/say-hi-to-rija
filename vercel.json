@@ -1,1 +1,8 @@
-{"framework": "remix"}
+{
+  "functions": {
+    "api/index.ts": {
+      "includeFiles": "app/**,node_modules/**"
+    }
+  },
+  "rewrites": [{ "source": "/(.*)", "destination": "/api/index" }]
+}

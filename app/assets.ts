@@ -1,5 +1,6 @@
 import { createAssetServer } from 'remix/assets'
 
+const isProd = process.env.NODE_ENV === 'production'
 const rootDir = process.cwd()
 
 export const assetServer = createAssetServer({
@@ -11,7 +12,9 @@ export const assetServer = createAssetServer({
   },
   allow: ['app/assets/**', 'node_modules/**'],
   deny: ['app/**/*.server.*'],
-  sourceMaps: process.env.NODE_ENV === 'development' ? 'external' : undefined,
+  sourceMaps: isProd ? undefined : 'external',
+  minify: isProd,
+  watch: isProd ? false : undefined,
   scripts: {
     define: {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV ?? 'development'),
