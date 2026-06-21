@@ -4,7 +4,8 @@
       "src": "api/index.ts",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": "app/**,node_modules/**"
+        "runtime": "nodejs24.x",
+        "includeFiles": ["app/**"]
       }
     }
   ],
