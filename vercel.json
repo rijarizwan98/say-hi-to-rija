@@ -1,8 +1,12 @@
 {
-  "functions": {
-    "api/index.ts": {
-      "includeFiles": "app/**,node_modules/**"
+  "builds": [
+    {
+      "src": "api/index.ts",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": "app/**,node_modules/**"
+      }
     }
-  },
-  "rewrites": [{ "source": "/(.*)", "destination": "/api/index" }]
+  ],
+  "routes": [{ "src": "/(.*)", "dest": "/api/index.ts" }]
 }
